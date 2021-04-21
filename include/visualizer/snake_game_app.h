@@ -4,6 +4,8 @@
 #include "cinder/app/RendererGl.h"
 #include "cinder/gl/gl.h"
 
+#include <core/snake_engine.h>
+
 namespace snake_game {
 
     class SnakeGameApp : public ci::app::App {
@@ -15,10 +17,9 @@ namespace snake_game {
 
         const double kWindowSize = 875;
         const double kMargin = 100;
-        const size_t kImageDimension = 28;
 
     private:
-        double size_;
+        SnakeEngine snake_engine_;
     };
 
 }

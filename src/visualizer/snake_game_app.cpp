@@ -9,15 +9,24 @@ namespace snake_game {
     void SnakeGameApp::draw() {
         ci::Color8u background_color(250, 250, 250);
         ci::gl::clear(background_color);
-
-        ci::gl::drawStringCentered(
-                "TEST TEST TEST TEST",
-                glm::vec2(kWindowSize / 2, kMargin / 2), ci::Color("black"));
-
+        snake_engine_.Draw();
     }
 
     void SnakeGameApp::keyDown(ci::app::KeyEvent event) {
-//        AppBase::keyDown(event);
+        switch (event.getCode()) {
+            case ci::app::KeyEvent::KEY_UP:
+                snake_engine_.MoveUp();
+                break;
+            case ci::app::KeyEvent::KEY_DOWN:
+                snake_engine_.MoveDown();
+                break;
+            case ci::app::KeyEvent::KEY_LEFT:
+                snake_engine_.MoveLeft();
+                break;
+            case ci::app::KeyEvent::KEY_RIGHT:
+                snake_engine_.MoveRight();
+                break;
+        }
     }
 }
 
