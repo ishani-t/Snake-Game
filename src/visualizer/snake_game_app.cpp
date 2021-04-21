@@ -7,9 +7,13 @@ namespace snake_game {
     }
 
     void SnakeGameApp::draw() {
-        ci::Color8u background_color(250, 250, 250);
+        ci::Color8u background_color(ci::Color("black"));
         ci::gl::clear(background_color);
         snake_engine_.Draw();
+    }
+
+    void SnakeGameApp::update() {
+        snake_engine_.Update();
     }
 
     void SnakeGameApp::keyDown(ci::app::KeyEvent event) {
@@ -29,5 +33,3 @@ namespace snake_game {
         }
     }
 }
-
-

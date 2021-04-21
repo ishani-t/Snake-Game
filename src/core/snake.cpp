@@ -12,7 +12,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(0, -20);
+        body_[0] += vec2(0, -kGridSize);
 
         direction_ = UP;
     }
@@ -21,7 +21,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(0, 20);
+        body_[0] += vec2(0, kGridSize);
 
         direction_ = DOWN;
     }
@@ -30,7 +30,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(-20, 0);
+        body_[0] += vec2(-kGridSize, 0);
 
         direction_ = LEFT;
     }
@@ -39,7 +39,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(20, 0);
+        body_[0] += vec2(kGridSize, 0);
 
         direction_ = RIGHT;
     }

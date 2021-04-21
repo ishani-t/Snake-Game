@@ -18,7 +18,20 @@ namespace snake_game {
     }
 
     void SnakeEngine::Update() {
-
+        switch (snake_.direction_) {
+            case Snake::UP:
+                MoveUp();
+                break;
+            case Snake::DOWN:
+                MoveDown();
+                break;
+            case Snake::LEFT:
+                MoveLeft();
+                break;
+            case Snake::RIGHT:
+                MoveRight();
+                break;
+        }
     }
 
     void SnakeEngine::MoveUp() {
