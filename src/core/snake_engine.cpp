@@ -2,7 +2,7 @@
 
 namespace snake_game {
 
-    SnakeEngine::SnakeEngine(size_t board_size) {
+    SnakeEngine::SnakeEngine(size_t board_size) : board_size_(board_size) {
         snake_ = Snake();
         game_state_ = kCont;
 
@@ -41,14 +41,14 @@ namespace snake_game {
             board_[x_spot][y_spot].type_ = Tile::SNAKE;
         }
 
-
-        for (size_t i = 0; i < board_[0].size(); i++) {
-            for (size_t j = 0; j < board_[1]. size(); j++) {
+        float tile_size = (float) board_window_size / board_size_;
+        for (size_t i = 0; i < board_size_; i++) {
+            for (size_t j = 0; j < board_size_; j++) {
                 Tile tile = board_[i][j];
                 ci::gl::color(tile.color_);
 
-                vec2 box_top_corner = vec2(100 + 20*i, 100 + 20*j);
-                vec2 box_bottom_corner = box_top_corner + vec2(20, 20);
+                vec2 box_top_corner = board_window_corner + vec2(tile_size * i, tile_size * j);
+                vec2 box_bottom_corner = box_top_corner + vec2(tile_size, tile_size);
                 cinder::Rectf rect = ci::Rectf(box_top_corner, box_bottom_corner);
 
                 if (tile.type_ == Tile::EMPTY) {

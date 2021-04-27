@@ -8,6 +8,9 @@
 
 namespace snake_game {
 
+    const vec2 board_window_corner(100, 100);
+    const size_t board_window_size = 500;
+
     class SnakeEngine {
     public:
         Snake snake_;
@@ -59,11 +62,14 @@ namespace snake_game {
 
     private:
         std::vector<std::vector<Tile>> board_;
+        size_t board_size_;
 
         /**
          * Sets board tile to empty when snake leaves it.
          */
         void UpdateBoardLeavingTile();
+
+
 
     };
 }
