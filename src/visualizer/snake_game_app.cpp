@@ -26,7 +26,7 @@ namespace snake_game {
                 snake_engine_.TurnSnake(Snake::kDown);
                 break;
             case ci::app::KeyEvent::KEY_LEFT:
-                snake_engine_.TurnSnake(Snake::kLeft);
+                snake_engine_.TurnSnake(Snake ::kLeft);
                 break;
             case ci::app::KeyEvent::KEY_RIGHT:
                 snake_engine_.TurnSnake(Snake::kRight);

@@ -6,11 +6,9 @@
 using glm::vec2;
 
 namespace snake_game {
-    const int kGridSize = 20;
 
     class Snake {
     public:
-        // body stores a vector of positions
         std::vector<vec2> body_;
 
         enum Direction { kUp, kDown, kLeft, kRight };
@@ -40,6 +38,13 @@ namespace snake_game {
          * Moves the snake right by one block on the grid.
          */
         void MoveRight();
+
+        /**
+         * Determines the next position of the snake's head.
+         * @param direction specified for snake to travel in
+         * @return vec2 representing next position
+         */
+        vec2 GetNextHeadPosition(Direction direction) const;
 
     private:
     };

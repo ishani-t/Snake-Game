@@ -69,7 +69,16 @@ namespace snake_game {
          */
         void UpdateBoardLeavingTile();
 
+        /**
+         * Ends game if snake will collide with wall.
+         */
+        void CheckWallCollision();
 
+        /**
+         * Determines what position the snake's head will be next based on given direction.
+         * @return Position of the snake head on next turn for given direction.
+         */
+        const vec2 GetNextSnakeHeadPosition(Snake::Direction direction) const;
 
     };
 }

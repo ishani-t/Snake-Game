@@ -42,4 +42,23 @@ namespace snake_game {
         direction_ = kRight;
     }
 
+    vec2 Snake::GetNextHeadPosition(Snake::Direction direction) const {
+        vec2 next_position = body_.front();
+        switch (direction_) {
+            case Snake::kUp:
+                next_position += vec2(0, -1);
+                break;
+            case Snake::kDown:
+                next_position += vec2(0, 1);
+                break;
+            case Snake::kLeft:
+                next_position += vec2(-1, 0);
+                break;
+            case Snake::kRight:
+                next_position += vec2(1, 0);
+                break;
+        }
+        return next_position;
+    }
+
 }

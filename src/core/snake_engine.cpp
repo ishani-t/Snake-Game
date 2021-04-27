@@ -65,6 +65,9 @@ namespace snake_game {
         if (game_state_ == kOver) {
             return;
         }
+
+        CheckWallCollision();
+
         switch (snake_.direction_) {
             case Snake::kUp:
                 MoveUp();
@@ -131,4 +134,18 @@ namespace snake_game {
         board_[x_spot][y_spot].type_ = Tile::EMPTY;
     }
 
+    void SnakeEngine::CheckWallCollision() {
+        vec2 next_position = GetNextSnakeHeadPosition(snake_.direction_);
+        if (next_position.x < 0 || next_position.x > board_size_) {
+            game_state_ = kOver;
+        }
+
+        if (next_position.y < 0 || next_position.y > board_size_) {
+            game_state_ = kOver;
+        }
+    }
+
+    const vec2 SnakeEngine::GetNextSnakeHeadPosition(Snake::Direction direction) const {
+        return snake_.GetNextHeadPosition(direction);
+    }
 }
