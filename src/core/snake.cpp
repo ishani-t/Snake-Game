@@ -3,17 +3,18 @@
 namespace snake_game {
 
     Snake::Snake() {
-        body_.push_back(vec2(10, 100));
-        body_.push_back(vec2(10, 100 + kGridSize));
-        body_.push_back(vec2(10, 100 + kGridSize + kGridSize));
+        body_.push_back(vec2(5, 5));
+        body_.push_back(vec2(5, 6));
+        body_.push_back(vec2(5, 7));
+        body_.push_back(vec2(5, 8));
+        body_.push_back(vec2(5, 9));
     }
 
     void Snake::MoveUp() {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(0, -kGridSize);
-
+        body_[0] += vec2(0, -1);
         direction_ = UP;
     }
 
@@ -21,8 +22,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(0, kGridSize);
-
+        body_[0] += vec2(0, 1);
         direction_ = DOWN;
     }
 
@@ -30,8 +30,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(-kGridSize, 0);
-
+        body_[0] += vec2(-1, 0);
         direction_ = LEFT;
     }
 
@@ -39,8 +38,7 @@ namespace snake_game {
         for (size_t i = body_.size() - 1; i > 0 ; --i) {
             body_[i] = body_[i-1];
         }
-        body_[0] += vec2(kGridSize, 0);
-
+        body_[0] += vec2(1, 0);
         direction_ = RIGHT;
     }
 

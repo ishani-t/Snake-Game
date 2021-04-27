@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/snake.h>
+#include <core/tile.h>
 #include <vector>
 #include "cinder/gl/gl.h"
 #include "cinder/Rand.h"
@@ -9,11 +10,12 @@ namespace snake_game {
 
     class SnakeEngine {
     public:
+        Snake snake_;
 
         /**
          * Empty constructor for SnakeEngine object.
          */
-        SnakeEngine();
+        SnakeEngine(size_t board_size = 20);
 
         /**
          * Draws each rectangle to form the snake on the board.
@@ -46,6 +48,6 @@ namespace snake_game {
         void MoveRight();
 
     private:
-        Snake snake_;
+        std::vector<std::vector<Tile>> board_;
     };
 }
