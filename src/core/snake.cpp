@@ -15,7 +15,7 @@ namespace snake_game {
             body_[i] = body_[i-1];
         }
         body_[0] += vec2(0, -1);
-        direction_ = UP;
+        direction_ = kUp;
     }
 
     void Snake::MoveDown() {
@@ -23,7 +23,7 @@ namespace snake_game {
             body_[i] = body_[i-1];
         }
         body_[0] += vec2(0, 1);
-        direction_ = DOWN;
+        direction_ = kDown;
     }
 
     void Snake::MoveLeft() {
@@ -31,7 +31,7 @@ namespace snake_game {
             body_[i] = body_[i-1];
         }
         body_[0] += vec2(-1, 0);
-        direction_ = LEFT;
+        direction_ = kLeft;
     }
 
     void Snake::MoveRight() {
@@ -39,7 +39,7 @@ namespace snake_game {
             body_[i] = body_[i-1];
         }
         body_[0] += vec2(1, 0);
-        direction_ = RIGHT;
+        direction_ = kRight;
     }
 
 }

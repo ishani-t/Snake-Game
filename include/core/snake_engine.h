@@ -12,6 +12,10 @@ namespace snake_game {
     public:
         Snake snake_;
 
+        enum State {kCont, kOver};
+        State game_state_;
+
+
         /**
          * Empty constructor for SnakeEngine object.
          */
@@ -26,6 +30,12 @@ namespace snake_game {
          * Moves the snake in its current direction.
          */
         void Update();
+
+        /**
+         * Updates the direction of snake when turning and checks for direction validity.
+         * @param direction Direction (kUp, kDown, kLeft, kRight) to turn to
+         */
+        void TurnSnake(Snake::Direction new_direction);
 
         /**
          * Moves snake up one spot on the grid.
@@ -49,5 +59,11 @@ namespace snake_game {
 
     private:
         std::vector<std::vector<Tile>> board_;
+
+        /**
+         * Sets board tile to empty when snake leaves it.
+         */
+        void UpdateBoardLeavingTile();
+
     };
 }

@@ -20,16 +20,16 @@ namespace snake_game {
     void SnakeGameApp::keyDown(ci::app::KeyEvent event) {
         switch (event.getCode()) {
             case ci::app::KeyEvent::KEY_UP:
-                snake_engine_.snake_.direction_ = Snake::UP;
+                snake_engine_.TurnSnake(Snake::kUp);
                 break;
             case ci::app::KeyEvent::KEY_DOWN:
-                snake_engine_.snake_.direction_ = Snake::DOWN;
+                snake_engine_.TurnSnake(Snake::kDown);
                 break;
             case ci::app::KeyEvent::KEY_LEFT:
-                snake_engine_.snake_.direction_ = Snake::LEFT;
+                snake_engine_.TurnSnake(Snake::kLeft);
                 break;
             case ci::app::KeyEvent::KEY_RIGHT:
-                snake_engine_.snake_.direction_ = Snake::RIGHT;
+                snake_engine_.TurnSnake(Snake::kRight);
                 break;
         }
     }

@@ -4,6 +4,7 @@ namespace snake_game {
 
     SnakeEngine::SnakeEngine(size_t board_size) {
         snake_ = Snake();
+        game_state_ = kCont;
 
         for (size_t i = 0; i < board_size; i++) {
             std::vector<Tile> row;
@@ -19,11 +20,27 @@ namespace snake_game {
 
     void SnakeEngine::Draw() {
 
+        if (game_state_ == kOver) {
+            ci::gl::drawStringCentered(
+                    "Game Over",
+                    glm::vec2(100, 100),
+                    ci::Color("white"), ci::Font("Helvetica", 24));
+
+            ci::gl::drawStringCentered(
+                    "Press R to restart!",
+                    glm::vec2(100, 300),
+                    ci::Color("white"), ci::Font("Helvetica", 24));
+
+            return;
+        }
+
+        // set tile types to snake for tiles on board where snake exists
         for (vec2 position: snake_.body_) {
             size_t x_spot = (int) position.x;
             size_t y_spot = (int) position.y;
             board_[x_spot][y_spot].type_ = Tile::SNAKE;
         }
+
 
         for (size_t i = 0; i < board_[0].size(); i++) {
             for (size_t j = 0; j < board_[1]. size(); j++) {
@@ -45,55 +62,73 @@ namespace snake_game {
     }
 
     void SnakeEngine::Update() {
+        if (game_state_ == kOver) {
+            return;
+        }
         switch (snake_.direction_) {
-            case Snake::UP:
+            case Snake::kUp:
                 MoveUp();
                 break;
-            case Snake::DOWN:
+            case Snake::kDown:
                 MoveDown();
                 break;
-            case Snake::LEFT:
+            case Snake::kLeft:
                 MoveLeft();
                 break;
-            case Snake::RIGHT:
+            case Snake::kRight:
                 MoveRight();
                 break;
         }
     }
 
-    void SnakeEngine::MoveUp() {
-        vec2 last_position = snake_.body_.back();
-        size_t x_spot = (size_t) last_position.x;
-        size_t y_spot = (size_t) last_position.y;
-        board_[x_spot][y_spot].type_ = Tile::EMPTY;
+    void SnakeEngine::TurnSnake(Snake::Direction new_direction) {
+        if (snake_.body_.size() > 1) {
+            Snake::Direction current_direction = snake_.direction_;
+            if (current_direction == Snake::kUp && new_direction == Snake::kDown) {
+                game_state_ = kOver;
+                return;
+            }
+            if (current_direction == Snake::kDown && new_direction == Snake::kUp) {
+                game_state_ = kOver;
+                return;
+            }
+            if (current_direction == Snake::kLeft && new_direction == Snake::kRight) {
+                game_state_ = kOver;
+                return;
+            }
+            if (current_direction == Snake::kRight && new_direction == Snake::kLeft) {
+                game_state_ = kOver;
+                return;
+            }
+        }
+        snake_.direction_ = new_direction;
+    }
 
+    void SnakeEngine::MoveUp() {
+        UpdateBoardLeavingTile();
         snake_.MoveUp();
     }
 
     void SnakeEngine::MoveDown() {
-        vec2 last_position = snake_.body_.back();
-        size_t x_spot = (size_t) last_position.x;
-        size_t y_spot = (size_t) last_position.y;
-        board_[x_spot][y_spot].type_ = Tile::EMPTY;
-
+        UpdateBoardLeavingTile();
         snake_.MoveDown();
     }
 
     void SnakeEngine::MoveLeft() {
-        vec2 last_position = snake_.body_.back();
-        size_t x_spot = (size_t) last_position.x;
-        size_t y_spot = (size_t) last_position.y;
-        board_[x_spot][y_spot].type_ = Tile::EMPTY;
-
+        UpdateBoardLeavingTile();
         snake_.MoveLeft();
     }
 
     void SnakeEngine::MoveRight() {
+        UpdateBoardLeavingTile();
+        snake_.MoveRight();
+    }
+
+    void SnakeEngine::UpdateBoardLeavingTile() {
         vec2 last_position = snake_.body_.back();
         size_t x_spot = (size_t) last_position.x;
         size_t y_spot = (size_t) last_position.y;
         board_[x_spot][y_spot].type_ = Tile::EMPTY;
-
-        snake_.MoveRight();
     }
+
 }

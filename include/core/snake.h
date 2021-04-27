@@ -13,7 +13,7 @@ namespace snake_game {
         // body stores a vector of positions
         std::vector<vec2> body_;
 
-        enum Direction { UP, DOWN, LEFT, RIGHT };
+        enum Direction { kUp, kDown, kLeft, kRight };
         Direction direction_;
 
         /**

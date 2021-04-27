@@ -4,7 +4,7 @@ using snake_game::SnakeGameApp;
 
 void prepareSettings(SnakeGameApp::Settings* settings) {
     settings->setResizable(false);
-    settings->setFrameRate(1.0f);
+    settings->setFrameRate(10.0f);
 }
 
 // This line is a macro that expands into an "int main()" function.
