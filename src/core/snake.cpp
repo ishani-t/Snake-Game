@@ -8,6 +8,9 @@ namespace snake_game {
         body_.push_back(vec2(5, 7));
         body_.push_back(vec2(5, 8));
         body_.push_back(vec2(5, 9));
+        body_.push_back(vec2(5, 10));
+        body_.push_back(vec2(5, 11));
+        body_.push_back(vec2(5, 12));
     }
 
     void Snake::MoveUp() {

@@ -75,10 +75,15 @@ namespace snake_game {
         void CheckWallCollision();
 
         /**
+         * Ends game if snake collides with itself.
+         */
+        void CheckSnakeCollision();
+
+        /**
          * Determines what position the snake's head will be next based on given direction.
          * @return Position of the snake head on next turn for given direction.
          */
-        const vec2 GetNextSnakeHeadPosition(Snake::Direction direction) const;
+        vec2 GetNextSnakeHeadPosition(Snake::Direction direction) const;
 
     };
 }
