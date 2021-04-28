@@ -9,7 +9,7 @@
 namespace snake_game {
 
     const vec2 board_window_corner(100, 100);
-    const size_t board_window_size = 500;
+    const size_t board_window_size = 600;
 
     class SnakeEngine {
     public:
@@ -17,8 +17,6 @@ namespace snake_game {
 
         enum State {kCont, kOver};
         State game_state_;
-
-        vec2 food_;
 
         /**
          * Empty constructor for SnakeEngine object.
@@ -64,6 +62,7 @@ namespace snake_game {
     private:
         std::vector<std::vector<Tile>> board_;
         size_t board_size_;
+        vec2 food_;
 
         /**
          * Sets board tile to empty when snake leaves it.
@@ -91,6 +90,9 @@ namespace snake_game {
          */
         vec2 GetNextSnakeHeadPosition(Snake::Direction direction) const;
 
+        /**
+         * Generates a random spot for a food tile (where there is no snake).
+         */
         void GenerateRandomFoodTile();
 
     };

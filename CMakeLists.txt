@@ -54,7 +54,7 @@ list(APPEND CORE_SOURCE_FILES src/core/snake_engine.cpp src/core/snake.cpp src/c
 list(APPEND SOURCE_FILES    ${CORE_SOURCE_FILES}
         src/visualizer/snake_game_app.cpp)
 
-list(APPEND TEST_FILES tests/test_main.cpp)
+list(APPEND TEST_FILES tests/test_main.cpp tests/test_snake.cpp)
 
 #add_executable(train-model apps/train_model_main.cc ${CORE_SOURCE_FILES})
 #target_include_directories(train-model PRIVATE include)

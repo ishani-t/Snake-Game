@@ -3,7 +3,7 @@
 namespace snake_game {
 
     SnakeEngine::SnakeEngine(size_t board_size) : board_size_(board_size) {
-        snake_ = Snake();
+        snake_ = Snake((size_t) board_size / 2, (size_t) board_size / 2);
         game_state_ = kCont;
 
         for (size_t i = 0; i < board_size; i++) {

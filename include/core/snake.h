@@ -15,9 +15,11 @@ namespace snake_game {
         Direction direction_;
 
         /**
-         * Empty constructor for snake object.
+         * Constructor taking in initial position of snake tile
+         * @param x - x position of snake's head
+         * @param y - y position of snake's head
          */
-        Snake();
+        Snake(size_t x = 0, size_t y = 0);
 
         /**
          * Moves the snake up by one block on the grid.

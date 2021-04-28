@@ -2,15 +2,8 @@
 
 namespace snake_game {
 
-    Snake::Snake() {
-        body_.push_back(vec2(1, 1));
-//        body_.push_back(vec2(5, 6));
-//        body_.push_back(vec2(5, 7));
-//        body_.push_back(vec2(5, 8));
-//        body_.push_back(vec2(5, 9));
-//        body_.push_back(vec2(5, 10));
-//        body_.push_back(vec2(5, 11));
-//        body_.push_back(vec2(5, 12));
+    Snake::Snake(size_t x, size_t y) {
+        body_.push_back(vec2(x, y));
     }
 
     void Snake::MoveUp() {
@@ -47,7 +40,7 @@ namespace snake_game {
 
     vec2 Snake::GetNextHeadPosition(Snake::Direction direction) const {
         vec2 next_position = body_.front();
-        switch (direction_) {
+        switch (direction) {
             case Snake::kUp:
                 next_position += vec2(0, -1);
                 break;
@@ -65,7 +58,8 @@ namespace snake_game {
     }
 
     void Snake::AddSize() {
-        body_.push_back(vec2(0, 0));
+        vec2 last_position = body_.back();
+        body_.push_back(last_position);
     }
 
 }
