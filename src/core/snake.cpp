@@ -3,14 +3,14 @@
 namespace snake_game {
 
     Snake::Snake() {
-        body_.push_back(vec2(5, 5));
-        body_.push_back(vec2(5, 6));
-        body_.push_back(vec2(5, 7));
-        body_.push_back(vec2(5, 8));
-        body_.push_back(vec2(5, 9));
-        body_.push_back(vec2(5, 10));
-        body_.push_back(vec2(5, 11));
-        body_.push_back(vec2(5, 12));
+        body_.push_back(vec2(1, 1));
+//        body_.push_back(vec2(5, 6));
+//        body_.push_back(vec2(5, 7));
+//        body_.push_back(vec2(5, 8));
+//        body_.push_back(vec2(5, 9));
+//        body_.push_back(vec2(5, 10));
+//        body_.push_back(vec2(5, 11));
+//        body_.push_back(vec2(5, 12));
     }
 
     void Snake::MoveUp() {
@@ -62,6 +62,10 @@ namespace snake_game {
                 break;
         }
         return next_position;
+    }
+
+    void Snake::AddSize() {
+        body_.push_back(vec2(0, 0));
     }
 
 }

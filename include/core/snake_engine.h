@@ -18,6 +18,7 @@ namespace snake_game {
         enum State {kCont, kOver};
         State game_state_;
 
+        vec2 food_;
 
         /**
          * Empty constructor for SnakeEngine object.
@@ -80,10 +81,17 @@ namespace snake_game {
         void CheckSnakeCollision();
 
         /**
+         * Determines if snake will eat food in next turn.
+         */
+        void CheckEatFood();
+
+        /**
          * Determines what position the snake's head will be next based on given direction.
          * @return Position of the snake head on next turn for given direction.
          */
         vec2 GetNextSnakeHeadPosition(Snake::Direction direction) const;
+
+        void GenerateRandomFoodTile();
 
     };
 }

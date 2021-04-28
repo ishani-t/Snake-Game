@@ -15,7 +15,7 @@ namespace snake_game {
             board_.push_back(row);
             row.clear();
         }
-
+        GenerateRandomFoodTile();
     }
 
     void SnakeEngine::Draw() {
@@ -41,6 +41,11 @@ namespace snake_game {
             board_[x_spot][y_spot].type_ = Tile::SNAKE;
         }
 
+        size_t x_food_spot = (int) food_.x;
+        size_t y_food_spot = (int) food_.y;
+        board_[x_food_spot][y_food_spot].type_ = Tile::FOOD;
+        board_[x_food_spot][y_food_spot].color_ = ci::Color("red");
+
         float tile_size = (float) board_window_size / board_size_;
         for (size_t i = 0; i < board_size_; i++) {
             for (size_t j = 0; j < board_size_; j++) {
@@ -58,7 +63,6 @@ namespace snake_game {
                 }
             }
         }
-
     }
 
     void SnakeEngine::Update() {
@@ -71,15 +75,19 @@ namespace snake_game {
 
         switch (snake_.direction_) {
             case Snake::kUp:
+                CheckEatFood();
                 MoveUp();
                 break;
             case Snake::kDown:
+                CheckEatFood();
                 MoveDown();
                 break;
             case Snake::kLeft:
+                CheckEatFood();
                 MoveLeft();
                 break;
             case Snake::kRight:
+                CheckEatFood();
                 MoveRight();
                 break;
         }
@@ -157,7 +165,37 @@ namespace snake_game {
 
     }
 
+    void SnakeEngine::CheckEatFood() {
+        vec2 next_position = GetNextSnakeHeadPosition(snake_.direction_);
+        if (next_position == food_) {
+            snake_.AddSize();
+
+            size_t x_spot = (size_t) food_.x;
+            size_t y_spot = (size_t) food_.y;
+            board_[x_spot][y_spot].type_ = Tile::EMPTY;
+            board_[x_spot][y_spot].color_ = ci::Color("green");
+            GenerateRandomFoodTile();
+        }
+    }
+
     vec2 SnakeEngine::GetNextSnakeHeadPosition(Snake::Direction direction) const {
         return snake_.GetNextHeadPosition(direction);
     }
+
+    void SnakeEngine::GenerateRandomFoodTile() {
+        vec2 food_spot = vec2(-1, -1);
+        bool isValidParticle = false;
+        while (!isValidParticle) {
+            food_spot = vec2(cinder::randInt(0, board_size_ - 1), cinder::randInt(0, board_size_ - 1));
+
+            for (vec2 position: snake_.body_) {
+                if (position == food_spot) {
+                    continue;
+                }
+            }
+            break;
+        }
+        food_ = food_spot;
+    }
+
 }

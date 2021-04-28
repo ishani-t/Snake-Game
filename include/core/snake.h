@@ -46,6 +46,11 @@ namespace snake_game {
          */
         vec2 GetNextHeadPosition(Direction direction) const;
 
+        /**
+         * Adds another block to the vector of positions.
+         */
+        void AddSize();
+
     private:
     };
 
