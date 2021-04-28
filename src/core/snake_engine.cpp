@@ -198,4 +198,8 @@ namespace snake_game {
         food_ = food_spot;
     }
 
+    void SnakeEngine::setFood(const vec2 &food) {
+        food_ = food;
+    }
+
 }

@@ -18,6 +18,8 @@ namespace snake_game {
         enum State {kCont, kOver};
         State game_state_;
 
+        std::vector<std::vector<Tile>> board_;
+
         /**
          * Empty constructor for SnakeEngine object.
          */
@@ -59,10 +61,17 @@ namespace snake_game {
          */
         void MoveRight();
 
+        /**
+         * Setter for food tile position. Used for testing purposes
+         * @param food vec2 representing food tile's position
+         */
+        void setFood(const vec2 &food);
+
     private:
-        std::vector<std::vector<Tile>> board_;
         size_t board_size_;
         vec2 food_;
+
+    private:
 
         /**
          * Sets board tile to empty when snake leaves it.
