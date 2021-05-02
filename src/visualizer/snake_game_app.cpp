@@ -31,6 +31,9 @@ namespace snake_game {
             case ci::app::KeyEvent::KEY_RIGHT:
                 snake_engine_.TurnSnake(Snake::kRight);
                 break;
+            case ci::app::KeyEvent::KEY_r:
+                snake_engine_ = SnakeEngine();
+                break;
         }
     }
 }
