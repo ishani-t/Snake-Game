@@ -71,8 +71,6 @@ namespace snake_game {
         size_t board_size_;
         vec2 food_;
 
-    private:
-
         /**
          * Sets board tile to empty when snake leaves it.
          */
@@ -103,6 +101,21 @@ namespace snake_game {
          * Generates a random spot for a food tile (where there is no snake).
          */
         void GenerateRandomFoodTile();
+
+        /**
+         * Helper method to draw screen for game over.
+         */
+        void DrawGameOverScreen();
+
+        /**
+         * Sets the tile types on board depending on snake and food positions.
+         */
+        void SetTileTypes();
+
+        /**
+         * Draws tiles from board.
+         */
+        void DrawTiles();
 
     };
 }
