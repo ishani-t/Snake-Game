@@ -187,14 +187,20 @@ namespace snake_game {
         bool isValidParticle = false;
         while (!isValidParticle) {
             food_spot = vec2(cinder::randInt(0, board_size_ - 1), cinder::randInt(0, board_size_ - 1));
+            size_t count = 0;
 
             for (vec2 position: snake_.body_) {
                 if (position == food_spot) {
-                    continue;
+                    count++;
+                    break;
                 }
             }
-            break;
+
+            if (count == 0) {
+                isValidParticle = true;
+            }
         }
+
         food_ = food_spot;
     }
 
