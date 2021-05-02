@@ -8,6 +8,8 @@
 
 namespace snake_game {
 
+    const double kWindowSize = 875;
+
     class SnakeGameApp : public ci::app::App {
     public:
         SnakeGameApp();
@@ -16,7 +18,7 @@ namespace snake_game {
         void update() override;
         void keyDown(ci::app::KeyEvent event) override;
 
-        const double kWindowSize = 875;
+        const double kWindowSize = snake_game::kWindowSize;
         const double kMargin = 100;
 
     private:

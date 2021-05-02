@@ -1,4 +1,5 @@
 #include <core/snake_engine.h>
+#include <visualizer/snake_game_app.h>
 
 namespace snake_game {
 
@@ -175,13 +176,21 @@ namespace snake_game {
     void SnakeEngine::DrawGameOverScreen() {
         ci::gl::drawStringCentered(
                 "Game Over",
-                glm::vec2(100, 100),
-                ci::Color("white"), ci::Font("Helvetica", 24));
+                glm::vec2(snake_game::kWindowSize / 2, snake_game::kWindowSize / 4),
+                ci::Color("white"),
+                ci::Font("Helvetica", 60));
+
+        ci::gl::drawStringCentered(
+               "Your score was " + std::to_string(snake_.body_.size()),
+               glm::vec2(snake_game::kWindowSize / 2, snake_game::kWindowSize / 2),
+               ci::Color("white"),
+               ci::Font("Helvetica", 60));
 
         ci::gl::drawStringCentered(
                 "Press R to restart!",
-                glm::vec2(100, 300),
-                ci::Color("white"), ci::Font("Helvetica", 24));
+                glm::vec2(snake_game::kWindowSize / 2, snake_game::kWindowSize * 3 / 4),
+                ci::Color("white"),
+                ci::Font("Helvetica", 40));
     }
 
     void SnakeEngine::SetTileTypes() {
