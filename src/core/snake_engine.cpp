@@ -156,6 +156,10 @@ namespace snake_game {
             food_spot = vec2(cinder::randInt(0, board_size_ - 1), cinder::randInt(0, board_size_ - 1));
             size_t count = 0;
 
+            if (GetNextSnakeHeadPosition(snake_.direction_) == food_spot) {
+                count++;
+            }
+
             for (vec2 position: snake_.body_) {
                 if (position == food_spot) {
                     count++;
