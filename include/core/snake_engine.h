@@ -12,7 +12,10 @@ namespace snake_game {
     const size_t board_window_size = 600;
 
     const vec2 score_window_corner(750, 100);
-    const vec2 score_window_size(150, 100);
+    const vec2 score_window_size(150, 150);
+
+    const vec2 control_window_corner(750, 300);
+    const vec2 control_window_size(150, 400);
 
     class SnakeEngine {
     public:
@@ -124,6 +127,11 @@ namespace snake_game {
          * Draws score display.
          */
          void DrawScore();
+
+         /**
+          * Draws controls menu
+          */
+          void DrawControls();
 
     };
 }

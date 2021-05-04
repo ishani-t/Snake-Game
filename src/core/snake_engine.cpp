@@ -29,6 +29,7 @@ namespace snake_game {
         SetTileTypes();
         DrawTiles();
         DrawScore();
+        DrawControls();
     }
 
     void SnakeEngine::Update() {
@@ -245,7 +246,87 @@ namespace snake_game {
         vec2 box_top_corner = score_window_corner;
         vec2 box_bottom_corner = box_top_corner + score_window_size;
         cinder::Rectf rect = ci::Rectf(box_top_corner, box_bottom_corner);
-        ci::gl::drawStrokedRect(rect);
+        ci::gl::drawStrokedRoundedRect(rect, 10);
+
+    }
+
+    void SnakeEngine::DrawControls() {
+
+        ci::gl::color(ci::Color("white"));
+        vec2 box_top_corner = control_window_corner;
+        vec2 box_bottom_corner = control_window_corner + control_window_size;
+        cinder::Rectf rect = ci::Rectf(box_top_corner, box_bottom_corner);
+        ci::gl::drawStrokedRoundedRect(rect, 10);
+
+
+        ci::gl::drawStringCentered("KEYS",
+                                   control_window_corner + vec2(control_window_size.x/2, control_window_size.y * 1 / 10),
+                                   ci::Color("white"),
+                                   ci::Font("Helvetica", 40));
+
+        std::vector<std::string> controls = {"up", "down", "left", "right", "restart"};
+
+        for (size_t i = 0; i < 5; i++) {
+            ci::gl::drawString(controls[i],
+                               control_window_corner + vec2(control_window_size.x/2 + 5, control_window_size.y * (i + 2) / 8),
+                               ci::Color("white"),
+                               ci::Font("Helvetica", 25));
+
+
+            vec2 box_top_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * (i + 2) / 8 - 10);
+            vec2 box_bottom_corner = box_top_corner + vec2(36, 36);
+            cinder::Rectf rect = ci::Rectf(box_top_corner, box_bottom_corner);
+            ci::gl::drawStrokedRoundedRect(rect, 10);
+        }
+
+        // Draw up arrow
+        ci::gl::color(ci::Color("white"));
+        if (snake_.direction_ == Snake::kUp) {
+            ci::gl::color(ci::Color("grey"));
+        }
+        vec2 up_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 2 / 8 - 10);
+        ci::gl::drawLine(up_box_corner + vec2(9, 27),
+                         up_box_corner + vec2(18, 9));
+        ci::gl::drawLine(up_box_corner + vec2(27, 27),
+                         up_box_corner + vec2(18, 9));
+
+        // Draw down arrow
+        ci::gl::color(ci::Color("white"));
+        if (snake_.direction_ == Snake::kDown) {
+            ci::gl::color(ci::Color("grey"));
+        }
+        vec2 down_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 3 / 8 - 10);
+        ci::gl::drawLine(down_box_corner + vec2(9, 9),
+                        down_box_corner + vec2(18, 27));
+        ci::gl::drawLine(down_box_corner + vec2(27, 9),
+                         down_box_corner + vec2(18, 27));
+
+        // Draw left arrow
+        ci::gl::color(ci::Color("white"));
+        if (snake_.direction_ == Snake::kLeft) {
+            ci::gl::color(ci::Color("grey"));
+        }
+        vec2 left_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 4 / 8 - 10);
+        ci::gl::drawLine(left_box_corner + vec2(27, 9),
+                         left_box_corner + vec2(9, 18));
+        ci::gl::drawLine(left_box_corner + vec2(27, 27),
+                         left_box_corner + vec2(9, 18));
+
+        // Draw right arrow
+        ci::gl::color(ci::Color("white"));
+        if (snake_.direction_ == Snake::kRight) {
+            ci::gl::color(ci::Color("grey"));
+        }
+        vec2 right_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 5 / 8 - 10);
+        ci::gl::drawLine(right_box_corner + vec2(9, 9),
+                         right_box_corner + vec2(27, 18));
+        ci::gl::drawLine(right_box_corner + vec2(9, 27),
+                         right_box_corner + vec2(27, 18));
+
+        // Draw restart key
+        ci::gl::color(ci::Color("white"));
+        vec2 restart_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 6 / 8 - 10);
+        ci::gl::drawStringCentered("R", restart_box_corner + vec2(18, 9), ci::Color("white"), ci::Font("Helvetica", 30));
 
     }
 
