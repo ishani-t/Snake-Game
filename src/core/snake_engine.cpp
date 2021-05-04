@@ -326,7 +326,10 @@ namespace snake_game {
         // Draw restart key
         ci::gl::color(ci::Color("white"));
         vec2 restart_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 6 / 8 - 10);
-        ci::gl::drawStringCentered("R", restart_box_corner + vec2(18, 9), ci::Color("white"), ci::Font("Helvetica", 30));
+        ci::gl::drawStringCentered("R",
+                                   restart_box_corner + vec2(18, 9),
+                                   ci::Color("white"),
+                                   ci::Font("Helvetica", 30));
 
     }
 
