@@ -5,6 +5,7 @@
 #include <vector>
 #include "cinder/gl/gl.h"
 #include "cinder/Rand.h"
+#include "cinder/audio/audio.h"
 
 namespace snake_game {
 
@@ -76,6 +77,7 @@ namespace snake_game {
     private:
         size_t board_size_;
         vec2 food_;
+        ci::audio::VoiceRef eat_sound_;
 
         /**
          * Sets board tile to empty when snake leaves it.

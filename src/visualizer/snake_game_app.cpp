@@ -7,6 +7,10 @@ namespace snake_game {
         snake_engine_ = SnakeEngine();
     }
 
+    void SnakeGameApp::setup() {
+        return;
+    }
+
     void SnakeGameApp::draw() {
         ci::Color8u background_color(ci::Color("black"));
         ci::gl::clear(background_color);

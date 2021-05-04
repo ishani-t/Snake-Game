@@ -17,6 +17,10 @@ namespace snake_game {
             row.clear();
         }
         GenerateRandomFoodTile();
+
+        ci::audio::SourceFileRef sourceFile = ci::audio::load( ci::app::loadAsset( "levelup.wav" ));
+        eat_sound_ = ci::audio::Voice::create(sourceFile);
+
     }
 
     void SnakeEngine::Draw() {
@@ -142,6 +146,7 @@ namespace snake_game {
             board_[x_spot][y_spot].type_ = Tile::EMPTY;
             board_[x_spot][y_spot].color_ = ci::Color("green");
             GenerateRandomFoodTile();
+            eat_sound_->start();
         }
     }
 

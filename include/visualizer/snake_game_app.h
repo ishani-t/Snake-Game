@@ -14,6 +14,7 @@ namespace snake_game {
     public:
         SnakeGameApp();
 
+        void setup() override;
         void draw() override;
         void update() override;
         void keyDown(ci::app::KeyEvent event) override;
