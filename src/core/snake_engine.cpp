@@ -264,9 +264,9 @@ namespace snake_game {
                                    ci::Color("white"),
                                    ci::Font("Helvetica", 40));
 
-        std::vector<std::string> controls = {"up", "down", "left", "right", "restart"};
+        std::vector<std::string> controls = {"up", "down", "left", "right", "restart", "quit"};
 
-        for (size_t i = 0; i < 5; i++) {
+        for (size_t i = 0; i < 6; i++) {
             ci::gl::drawString(controls[i],
                                control_window_corner + vec2(control_window_size.x/2 + 5, control_window_size.y * (i + 2) / 8),
                                ci::Color("white"),
@@ -328,6 +328,14 @@ namespace snake_game {
         vec2 restart_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 6 / 8 - 10);
         ci::gl::drawStringCentered("R",
                                    restart_box_corner + vec2(18, 9),
+                                   ci::Color("white"),
+                                   ci::Font("Helvetica", 30));
+
+        // Draw quit key
+        ci::gl::color(ci::Color("white"));
+        vec2 quit_box_corner = control_window_corner + vec2(control_window_size.x/5, control_window_size.y * 7 / 8 - 10);
+        ci::gl::drawStringCentered("Q",
+                                   quit_box_corner + vec2(18, 9),
                                    ci::Color("white"),
                                    ci::Font("Helvetica", 30));
 

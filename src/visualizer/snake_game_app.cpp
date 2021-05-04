@@ -34,6 +34,8 @@ namespace snake_game {
             case ci::app::KeyEvent::KEY_r:
                 snake_engine_ = SnakeEngine();
                 break;
+            case ci::app::KeyEvent::KEY_q:
+                std::exit(0);
         }
     }
 }
