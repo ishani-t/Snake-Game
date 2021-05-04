@@ -11,6 +11,9 @@ namespace snake_game {
     const vec2 board_window_corner(100, 100);
     const size_t board_window_size = 600;
 
+    const vec2 score_window_corner(750, 100);
+    const vec2 score_window_size(150, 100);
+
     class SnakeEngine {
     public:
         Snake snake_;
@@ -116,6 +119,11 @@ namespace snake_game {
          * Draws tiles from board.
          */
         void DrawTiles();
+
+        /**
+         * Draws score display.
+         */
+         void DrawScore();
 
     };
 }

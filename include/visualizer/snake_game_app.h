@@ -8,7 +8,7 @@
 
 namespace snake_game {
 
-    const double kWindowSize = 875;
+    const double kWindowSize = 950;
 
     class SnakeGameApp : public ci::app::App {
     public:

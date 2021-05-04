@@ -28,6 +28,7 @@ namespace snake_game {
 
         SetTileTypes();
         DrawTiles();
+        DrawScore();
     }
 
     void SnakeEngine::Update() {
@@ -226,6 +227,26 @@ namespace snake_game {
                 }
             }
         }
+    }
+
+    void SnakeEngine::DrawScore() {
+
+        ci::gl::drawStringCentered("SCORE",
+                                   score_window_corner + vec2(score_window_size.x / 2, score_window_size.y / 4),
+                                   ci::Color("white"),
+                                   ci::Font("Helvetica", 40));
+
+        ci::gl::drawStringCentered(std::to_string(snake_.body_.size()),
+                                   score_window_corner + vec2(score_window_size.x/2, score_window_size.y * 3 / 5),
+                                   ci::Color("white"),
+                                   ci::Font("Helvetica", 40));
+
+        ci::gl::color(ci::Color("white"));
+        vec2 box_top_corner = score_window_corner;
+        vec2 box_bottom_corner = box_top_corner + score_window_size;
+        cinder::Rectf rect = ci::Rectf(box_top_corner, box_bottom_corner);
+        ci::gl::drawStrokedRect(rect);
+
     }
 
 }
