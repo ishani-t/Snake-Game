@@ -24,6 +24,7 @@ namespace snake_game {
 
     private:
         SnakeEngine snake_engine_;
+        bool is_paused_;
     };
 
 }

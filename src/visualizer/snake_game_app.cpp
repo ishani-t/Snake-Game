@@ -5,6 +5,7 @@ namespace snake_game {
     SnakeGameApp::SnakeGameApp() {
         ci::app::setWindowSize((int) kWindowSize, (int) kWindowSize);
         snake_engine_ = SnakeEngine();
+        is_paused_ = false;
     }
 
     void SnakeGameApp::setup() {
@@ -18,6 +19,9 @@ namespace snake_game {
     }
 
     void SnakeGameApp::update() {
+        if (is_paused_) {
+            return;
+        }
         snake_engine_.Update();
     }
 
@@ -40,6 +44,8 @@ namespace snake_game {
                 break;
             case ci::app::KeyEvent::KEY_q:
                 std::exit(0);
+            case ci::app::KeyEvent::KEY_p:
+                is_paused_ = !is_paused_;
         }
     }
 }
