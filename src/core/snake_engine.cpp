@@ -18,8 +18,11 @@ namespace snake_game {
         }
         GenerateRandomFoodTile();
 
-        ci::audio::SourceFileRef sourceFile = ci::audio::load( ci::app::loadAsset( "levelup.wav" ));
-        eat_sound_ = ci::audio::Voice::create(sourceFile);
+        ci::audio::SourceFileRef sourceFile1 = ci::audio::load( ci::app::loadAsset( "levelup.wav" ));
+        eat_sound_ = ci::audio::Voice::create(sourceFile1);
+
+        ci::audio::SourceFileRef sourceFile2 = ci::audio::load( ci::app::loadAsset( "losesound.mp3" ));
+        lose_sound_ = ci::audio::Voice::create(sourceFile2);
 
     }
 
@@ -118,10 +121,12 @@ namespace snake_game {
         vec2 next_position = GetNextSnakeHeadPosition(snake_.direction_);
         if (next_position.x < 0 || next_position.x >= board_size_) {
             game_state_ = kOver;
+            lose_sound_->start();
         }
 
         if (next_position.y < 0 || next_position.y >= board_size_) {
             game_state_ = kOver;
+            lose_sound_->start();
         }
     }
 
@@ -131,6 +136,7 @@ namespace snake_game {
         for (vec2 position: snake_.body_) {
             if (next_position == position && next_position != snake_.body_[0]) {
                 game_state_ = kOver;
+                lose_sound_->start();
             }
         }
 

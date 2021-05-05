@@ -78,6 +78,7 @@ namespace snake_game {
         size_t board_size_;
         vec2 food_;
         ci::audio::VoiceRef eat_sound_;
+        ci::audio::VoiceRef lose_sound_;
 
         /**
          * Sets board tile to empty when snake leaves it.
