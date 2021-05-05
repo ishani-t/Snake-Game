@@ -3,7 +3,7 @@
 This app follows to standard rules of the Snake Game. The goal is simple: eat as many food tiles as you can without bumping into yourself or the walls. 
 You can maneuver the snake with your arrow keys. In this game, the snake is green and the red tiles are food. Enjoy!
 
-![Snake Game Image](snake_game.png)
+![Snake Game Image](snake_game.PNG)
 
 #### Controls
 
